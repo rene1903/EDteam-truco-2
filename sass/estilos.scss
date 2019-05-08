@@ -1,0 +1,31 @@
+// fuente extraida de Google font
+@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy');
+// una buena practica es colocar las funciones arriba
+@function texto3d($numero,$color){
+    // variable inicial
+    // #{} interpolo la variable
+    // $i from 1 to 50 (llega hasta 49 la iteracion)
+    // con through llega a 50.
+    // en teoria de diseño el primer borde es mas oscuro
+    $text-shadow: 2px 2px darken($color,20%);
+    @for $i from 1 through $numero {
+        $text-shadow: '#{$text-shadow},
+                    #{$i}px #{$i}px #{$color}';
+    }
+    @return unquote($text-shadow);
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: darken(steelblue, 15%);
+}
+.texto3d {
+    font-family: Luckiest Guy;
+    font-size: 5em;
+    text-align: center;
+    color: #eee;
+    text-shadow: texto3d(20,#111);
+    transform: rotate(-6deg)
+}
